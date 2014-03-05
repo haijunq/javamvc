@@ -7,15 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class StrView extends JFrame {
-    private StrModel strModel;
     private JTextField textFieldInput;
     private JTextField textFieldOutput;
     private JButton revButton;
     private JButton clrButton;
     
-    public StrView(StrModel strModel) {
+    public StrView() {
         super("Reverse String");
-        this.strModel = strModel;
         setLayout(new FlowLayout());
         
         textFieldInput = new JTextField("", 20);
@@ -30,18 +28,16 @@ public class StrView extends JFrame {
         
         clrButton = new JButton("Clear");
         add(clrButton);
-        
-        StrController strController = new StrController(StrView.this, strModel);
+    }
+
+    public void register(StrController strController) {
         revButton.addActionListener(strController);
-        clrButton.addActionListener(strController);
+        clrButton.addActionListener(strController);        
     }
-
-    public StrModel getStrModel() {
-        return strModel;
-    }
-
-    public void setStrModel(StrModel strModel) {
-        this.strModel = strModel;
+    
+    public void update(StrModel strModel) {
+        textFieldInput.setText(strModel.getStr());
+        textFieldOutput.setText(strModel.getRevstr());
     }
 
     public JTextField getTextFieldInput() {

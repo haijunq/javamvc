@@ -21,12 +21,12 @@ public class StrController implements ActionListener {
         
         if (event.getSource() == strView.getRevButton()) {
             strModel.setStr(strView.getTextFieldInput().getText());
-            strView.getTextFieldOutput().setText(strModel.getRevstr()); 
+            strView.update(strModel);
         }
         
         if (event.getSource() == strView.getClrButton()) {
-            strView.getTextFieldInput().setText("");
-            strView.getTextFieldOutput().setText("");
+            strModel.setStr("");
+            strView.update(strModel);
         }
     }
 }
